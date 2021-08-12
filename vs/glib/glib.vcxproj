@@ -1,0 +1,1448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{ccbf709c-2665-4463-a8ee-e72995e001b4}</ProjectGuid>
+    <RootNamespace>..\..\glib\glib</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_VISUALC_;NeedFunctionPrototypes;FFI_BUILDING;GIO_COMPILATION;GLIB_COMPILATION;GOBJECT_COMPILATION;HAVE_CONFIG_H;LINK_SIZE=2;MATCH_LIMIT=10000000;MATCH_LIMIT_RECURSION=10000000;MAX_NAME_SIZE=32;MAX_NAME_COUNT=10000;MAX_DUPLENGTH=30000;NEWLINE=-1;PCRE_STATIC;POSIX_MALLOC_THRESHOLD=10;SUPPORT_UCP;SUPPORT_UTF8;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\glib;..\..\glib\glib;..\..\glib\gio;..\..\glib\gio\gvdb;..\..\glib\gio\win32;..\..\glib\glib;..\..\glib\glib\dirent;..\..\glib\glib\gnulib;..\..\glib\glib\gobject;..\..\glib\glib\libcharset;..\..\glib\glib\pcre;..\..\glib\gmodule;..\..\glib\gobject;..\..\libffi\include;..\..\zlib</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/utf-8</AdditionalOptions>
+      <DisableSpecificWarnings>4146;4996;4244;4703</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_VISUALC_;NeedFunctionPrototypes;FFI_BUILDING;GIO_COMPILATION;GLIB_COMPILATION;GOBJECT_COMPILATION;HAVE_CONFIG_H;LINK_SIZE=2;MATCH_LIMIT=10000000;MATCH_LIMIT_RECURSION=10000000;MAX_NAME_SIZE=32;MAX_NAME_COUNT=10000;MAX_DUPLENGTH=30000;NEWLINE=-1;PCRE_STATIC;POSIX_MALLOC_THRESHOLD=10;SUPPORT_UCP;SUPPORT_UTF8;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\glib;..\..\glib\glib;..\..\glib\gio;..\..\glib\gio\gvdb;..\..\glib\gio\win32;..\..\glib\glib;..\..\glib\glib\dirent;..\..\glib\glib\gnulib;..\..\glib\glib\gobject;..\..\glib\glib\libcharset;..\..\glib\glib\pcre;..\..\glib\gmodule;..\..\glib\gobject;..\..\libffi\include;..\..\zlib</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8</AdditionalOptions>
+      <DisableSpecificWarnings>4146;4996;4244;4703</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_VISUALC_;NeedFunctionPrototypes;FFI_BUILDING;GIO_COMPILATION;GLIB_COMPILATION;GOBJECT_COMPILATION;HAVE_CONFIG_H;LINK_SIZE=2;MATCH_LIMIT=10000000;MATCH_LIMIT_RECURSION=10000000;MAX_NAME_SIZE=32;MAX_NAME_COUNT=10000;MAX_DUPLENGTH=30000;NEWLINE=-1;PCRE_STATIC;POSIX_MALLOC_THRESHOLD=10;SUPPORT_UCP;SUPPORT_UTF8;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\glib;..\..\glib\glib;..\..\glib\gio;..\..\glib\gio\gvdb;..\..\glib\gio\win32;..\..\glib\glib;..\..\glib\glib\dirent;..\..\glib\glib\gnulib;..\..\glib\glib\gobject;..\..\glib\glib\libcharset;..\..\glib\glib\pcre;..\..\glib\gmodule;..\..\glib\gobject;..\..\libffi\include;..\..\zlib</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/utf-8</AdditionalOptions>
+      <DisableSpecificWarnings>4146;4996;4244;4703</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_VISUALC_;NeedFunctionPrototypes;FFI_BUILDING;GIO_COMPILATION;GLIB_COMPILATION;GOBJECT_COMPILATION;HAVE_CONFIG_H;LINK_SIZE=2;MATCH_LIMIT=10000000;MATCH_LIMIT_RECURSION=10000000;MAX_NAME_SIZE=32;MAX_NAME_COUNT=10000;MAX_DUPLENGTH=30000;NEWLINE=-1;PCRE_STATIC;POSIX_MALLOC_THRESHOLD=10;SUPPORT_UCP;SUPPORT_UTF8;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\glib;..\..\glib\glib;..\..\glib\gio;..\..\glib\gio\gvdb;..\..\glib\gio\win32;..\..\glib\glib;..\..\glib\glib\dirent;..\..\glib\glib\gnulib;..\..\glib\glib\gobject;..\..\glib\glib\libcharset;..\..\glib\glib\pcre;..\..\glib\gmodule;..\..\glib\gobject;..\..\libffi\include;..\..\zlib</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8</AdditionalOptions>
+      <DisableSpecificWarnings>4146;4996;4244;4703</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\glib\gio\gaction.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gactiongroup.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gactionmap.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gappinfo.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gasynchelper.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gasyncinitable.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gasyncresult.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gbufferedinputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gbufferedoutputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gbytesicon.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gcancellable.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gcharsetconverter.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gcontenttype-win32.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gcontextspecificgroup.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gconverter.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gconverterinputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gconverteroutputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gcredentials.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gdatagrambased.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gdatainputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gdataoutputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gdelayedsettingsbackend.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gdrive.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gdtlsclientconnection.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gdtlsconnection.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gdtlsserverconnection.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gdummyfile.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gdummyproxyresolver.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gdummytlsbackend.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gemblem.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gemblemedicon.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gfile.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gfileattribute.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gfiledescriptorbased.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gfileenumerator.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gfileicon.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gfileinfo.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gfileinputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gfileiostream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gfilemonitor.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gfilenamecompleter.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gfileoutputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gfilterinputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gfilteroutputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\ghttpproxy.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gicon.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\ginetaddress.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\ginetaddressmask.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\ginetsocketaddress.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\ginitable.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\ginputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gioenumtypes.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gioerror.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\giomodule-priv.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\giomodule.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gioscheduler.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\giostream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gkeyfilesettingsbackend.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\glistmodel.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gliststore.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gloadableicon.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\glocalfile.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\glocalfileenumerator.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\glocalfileinfo.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\glocalfileinputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\glocalfileiostream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\glocalfilemonitor.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\glocalfileoutputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\glocalvfs.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gmarshal-internal.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gmemoryinputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gmemorymonitor.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gmemoryoutputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gmemorysettingsbackend.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gmenu.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gmenumodel.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gmount.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gmountoperation.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gnativesocketaddress.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gnativevolumemonitor.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gnetworkaddress.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gnetworking.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gnetworkmonitor.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gnetworkmonitorbase.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gnetworkservice.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gnullsettingsbackend.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\goutputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gpermission.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gpollableinputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gpollableoutputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gpollableutils.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gpollfilemonitor.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gportalsupport.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gpropertyaction.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gproxy.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gproxyaddress.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gproxyaddressenumerator.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gproxyresolver.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gregistrysettingsbackend.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gremoteactiongroup.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gresolver.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gresource.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gresourcefile.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gseekable.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsettings-mapping.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsettings.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsettingsbackend.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsettingsschema.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsimpleaction.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsimpleactiongroup.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsimpleasyncresult.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsimpleiostream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsimplepermission.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsimpleproxyresolver.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsocket.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsocketaddress.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsocketaddressenumerator.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsocketclient.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsocketconnectable.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsocketconnection.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsocketcontrolmessage.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsocketinputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsocketoutputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsocks4aproxy.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsocks4proxy.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsocks5proxy.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gsrvtarget.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gtask.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gtcpconnection.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gtcpwrapperconnection.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gthemedicon.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gthreadedresolver.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gtlsbackend.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gtlscertificate.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gtlsclientconnection.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gtlsconnection.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gtlsdatabase.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gtlsfiledatabase.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gtlsinteraction.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gtlspassword.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gtlsserverconnection.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gunionvolumemonitor.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gvfs.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gvolume.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gvolumemonitor.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gwin32appinfo.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gwin32inputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gwin32mount.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gwin32networkmonitor.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gwin32outputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gwin32registrykey.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gwin32volumemonitor.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gzlibcompressor.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gzlibdecompressor.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\strinfo.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\thumbnail-verify.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gvdb\gvdb-builder.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\gvdb\gvdb-reader.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\win32\gwin32filemonitor.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\win32\gwin32fsmonitorutils.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\win32\gwinhttpfile.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\win32\gwinhttpfileinputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\win32\gwinhttpfileoutputstream.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gio\win32\gwinhttpvfs.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\docs.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\garcbox.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\garray.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gasyncqueue.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gatomic.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gbacktrace.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gbase64.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gbitlock.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gbookmarkfile.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gbytes.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gcharset.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gchecksum.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gconvert.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gdataset.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gdate.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gdatetime.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gdir.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\genviron.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gerror.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gfileutils.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\ggettext.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\ghash.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\ghmac.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\ghook.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\ghostutils.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\giochannel.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\giowin32.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gkeyfile.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\glib-init.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\glib-private.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\glist.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gmain.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gmappedfile.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gmarkup.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gmem.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gmessages.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnode.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\goption.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gpattern.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gpoll.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gprimes.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gprintf.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gqsort.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gquark.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gqueue.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\grand.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\grcbox.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\grefcount.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\grefstring.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gregex.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gscanner.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gsequence.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gshell.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gslice.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gslist.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gspawn-win32.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gstdio.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gstrfuncs.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gstring.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gstringchunk.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gtestutils.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gthread-win32.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gthread.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gthreadpool.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gtimer.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gtimezone.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gtranslit.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gtrashstack.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gtree.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gunibreak.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gunicollate.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gunidecomp.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\guniprop.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gurifuncs.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gutf8.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gutils.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\guuid.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gvariant-core.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gvariant-parser.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gvariant-serialiser.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gvariant.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gvarianttype.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gvarianttypeinfo.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gversion.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gwakeup.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gwin32.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\dirent\dirent.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnulib\asnprintf.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnulib\frexp.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnulib\frexpl.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnulib\isinf.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnulib\isnand.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnulib\isnanf.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnulib\isnanl.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnulib\printf-args.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnulib\printf-frexp.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnulib\printf-frexpl.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnulib\printf-parse.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnulib\printf.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnulib\signbitd.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnulib\signbitf.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnulib\signbitl.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnulib\vasnprintf.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\gnulib\xsize.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\libcharset\localcharset.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_byte_order.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_chartables.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_compile.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_config.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_dfa_exec.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_exec.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_fullinfo.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_get.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_globals.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_jit_compile.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_newline.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_ord2utf8.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_string_utils.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_study.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_tables.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_valid_utf8.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_version.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\glib\pcre\pcre_xclass.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gmodule\gmodule.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gatomicarray.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gbinding.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gboxed.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gclosure.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\genums.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gmarshal.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gobject.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gobjectnotifyqueue.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gparam.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gparamspecs.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gsignal.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gsourceclosure.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gtype.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gtypemodule.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gtypeplugin.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gvalue.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gvaluearray.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gvaluetransform.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="..\..\glib\gobject\gvaluetypes.c">
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="msvc_recommended_pragmas.h" />
+    <ClInclude Include="..\..\glib\gio\gaction.h" />
+    <ClInclude Include="..\..\glib\gio\gactiongroup.h" />
+    <ClInclude Include="..\..\glib\gio\gactionmap.h" />
+    <ClInclude Include="..\..\glib\gio\gappinfo.h" />
+    <ClInclude Include="..\..\glib\gio\gappinfoprivate.h" />
+    <ClInclude Include="..\..\glib\gio\gapplicationimpl.h" />
+    <ClInclude Include="..\..\glib\gio\gasynchelper.h" />
+    <ClInclude Include="..\..\glib\gio\gasyncinitable.h" />
+    <ClInclude Include="..\..\glib\gio\gasyncresult.h" />
+    <ClInclude Include="..\..\glib\gio\gbufferedinputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gbufferedoutputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gbytesicon.h" />
+    <ClInclude Include="..\..\glib\gio\gcancellable.h" />
+    <ClInclude Include="..\..\glib\gio\gcharsetconverter.h" />
+    <ClInclude Include="..\..\glib\gio\gcontenttypeprivate.h" />
+    <ClInclude Include="..\..\glib\gio\gcontextspecificgroup.h" />
+    <ClInclude Include="..\..\glib\gio\gconverter.h" />
+    <ClInclude Include="..\..\glib\gio\gconverterinputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gconverteroutputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gcredentials.h" />
+    <ClInclude Include="..\..\glib\gio\gcredentialsprivate.h" />
+    <ClInclude Include="..\..\glib\gio\gdatagrambased.h" />
+    <ClInclude Include="..\..\glib\gio\gdatainputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gdataoutputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gdbusactiongroup-private.h" />
+    <ClInclude Include="..\..\glib\gio\gdelayedsettingsbackend.h" />
+    <ClInclude Include="..\..\glib\gio\gdrive.h" />
+    <ClInclude Include="..\..\glib\gio\gdtlsclientconnection.h" />
+    <ClInclude Include="..\..\glib\gio\gdtlsconnection.h" />
+    <ClInclude Include="..\..\glib\gio\gdtlsserverconnection.h" />
+    <ClInclude Include="..\..\glib\gio\gdummyfile.h" />
+    <ClInclude Include="..\..\glib\gio\gdummyproxyresolver.h" />
+    <ClInclude Include="..\..\glib\gio\gdummytlsbackend.h" />
+    <ClInclude Include="..\..\glib\gio\gemblem.h" />
+    <ClInclude Include="..\..\glib\gio\gemblemedicon.h" />
+    <ClInclude Include="..\..\glib\gio\gfile.h" />
+    <ClInclude Include="..\..\glib\gio\gfileattribute-priv.h" />
+    <ClInclude Include="..\..\glib\gio\gfileattribute.h" />
+    <ClInclude Include="..\..\glib\gio\gfiledescriptorbased.h" />
+    <ClInclude Include="..\..\glib\gio\gfileenumerator.h" />
+    <ClInclude Include="..\..\glib\gio\gfileicon.h" />
+    <ClInclude Include="..\..\glib\gio\gfileinfo-priv.h" />
+    <ClInclude Include="..\..\glib\gio\gfileinfo.h" />
+    <ClInclude Include="..\..\glib\gio\gfileinputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gfileiostream.h" />
+    <ClInclude Include="..\..\glib\gio\gfilemonitor.h" />
+    <ClInclude Include="..\..\glib\gio\gfilenamecompleter.h" />
+    <ClInclude Include="..\..\glib\gio\gfileoutputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gfilterinputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gfilteroutputstream.h" />
+    <ClInclude Include="..\..\glib\gio\ghttpproxy.h" />
+    <ClInclude Include="..\..\glib\gio\gicon.h" />
+    <ClInclude Include="..\..\glib\gio\ginetaddress.h" />
+    <ClInclude Include="..\..\glib\gio\ginetaddressmask.h" />
+    <ClInclude Include="..\..\glib\gio\ginetsocketaddress.h" />
+    <ClInclude Include="..\..\glib\gio\ginitable.h" />
+    <ClInclude Include="..\..\glib\gio\ginputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gio-autocleanups.h" />
+    <ClInclude Include="..\..\glib\gio\gio.h" />
+    <ClInclude Include="..\..\glib\gio\gioenums.h" />
+    <ClInclude Include="..\..\glib\gio\gioenumtypes.h" />
+    <ClInclude Include="..\..\glib\gio\gioerror.h" />
+    <ClInclude Include="..\..\glib\gio\giomodule-priv.h" />
+    <ClInclude Include="..\..\glib\gio\giomodule.h" />
+    <ClInclude Include="..\..\glib\gio\gioprivate.h" />
+    <ClInclude Include="..\..\glib\gio\gioscheduler.h" />
+    <ClInclude Include="..\..\glib\gio\giostream.h" />
+    <ClInclude Include="..\..\glib\gio\giotypes.h" />
+    <ClInclude Include="..\..\glib\gio\giowin32-priv.h" />
+    <ClInclude Include="..\..\glib\gio\gio_trace.h" />
+    <ClInclude Include="..\..\glib\gio\glistmodel.h" />
+    <ClInclude Include="..\..\glib\gio\gliststore.h" />
+    <ClInclude Include="..\..\glib\gio\gloadableicon.h" />
+    <ClInclude Include="..\..\glib\gio\glocalfile.h" />
+    <ClInclude Include="..\..\glib\gio\glocalfileenumerator.h" />
+    <ClInclude Include="..\..\glib\gio\glocalfileinfo.h" />
+    <ClInclude Include="..\..\glib\gio\glocalfileinputstream.h" />
+    <ClInclude Include="..\..\glib\gio\glocalfileiostream.h" />
+    <ClInclude Include="..\..\glib\gio\glocalfilemonitor.h" />
+    <ClInclude Include="..\..\glib\gio\glocalfileoutputstream.h" />
+    <ClInclude Include="..\..\glib\gio\glocalfileprivate.h" />
+    <ClInclude Include="..\..\glib\gio\glocalvfs.h" />
+    <ClInclude Include="..\..\glib\gio\gmarshal-internal.h" />
+    <ClInclude Include="..\..\glib\gio\gmemoryinputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gmemorymonitor.h" />
+    <ClInclude Include="..\..\glib\gio\gmemoryoutputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gmenu.h" />
+    <ClInclude Include="..\..\glib\gio\gmenumodel.h" />
+    <ClInclude Include="..\..\glib\gio\gmount.h" />
+    <ClInclude Include="..\..\glib\gio\gmountoperation.h" />
+    <ClInclude Include="..\..\glib\gio\gmountprivate.h" />
+    <ClInclude Include="..\..\glib\gio\gnativesocketaddress.h" />
+    <ClInclude Include="..\..\glib\gio\gnativevolumemonitor.h" />
+    <ClInclude Include="..\..\glib\gio\gnetworkaddress.h" />
+    <ClInclude Include="..\..\glib\gio\gnetworking.h" />
+    <ClInclude Include="..\..\glib\gio\gnetworkingprivate.h" />
+    <ClInclude Include="..\..\glib\gio\gnetworkmonitor.h" />
+    <ClInclude Include="..\..\glib\gio\gnetworkmonitorbase.h" />
+    <ClInclude Include="..\..\glib\gio\gnetworkservice.h" />
+    <ClInclude Include="..\..\glib\gio\gnotification-private.h" />
+    <ClInclude Include="..\..\glib\gio\goutputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gpermission.h" />
+    <ClInclude Include="..\..\glib\gio\gpollableinputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gpollableoutputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gpollableutils.h" />
+    <ClInclude Include="..\..\glib\gio\gpollfilemonitor.h" />
+    <ClInclude Include="..\..\glib\gio\gportalsupport.h" />
+    <ClInclude Include="..\..\glib\gio\gpropertyaction.h" />
+    <ClInclude Include="..\..\glib\gio\gproxy.h" />
+    <ClInclude Include="..\..\glib\gio\gproxyaddress.h" />
+    <ClInclude Include="..\..\glib\gio\gproxyaddressenumerator.h" />
+    <ClInclude Include="..\..\glib\gio\gproxyresolver.h" />
+    <ClInclude Include="..\..\glib\gio\gregistrysettingsbackend.h" />
+    <ClInclude Include="..\..\glib\gio\gremoteactiongroup.h" />
+    <ClInclude Include="..\..\glib\gio\gresolver.h" />
+    <ClInclude Include="..\..\glib\gio\gresource.h" />
+    <ClInclude Include="..\..\glib\gio\gresourcefile.h" />
+    <ClInclude Include="..\..\glib\gio\gseekable.h" />
+    <ClInclude Include="..\..\glib\gio\gsettings-mapping.h" />
+    <ClInclude Include="..\..\glib\gio\gsettings.h" />
+    <ClInclude Include="..\..\glib\gio\gsettingsbackend.h" />
+    <ClInclude Include="..\..\glib\gio\gsettingsbackendinternal.h" />
+    <ClInclude Include="..\..\glib\gio\gsettingsschema-internal.h" />
+    <ClInclude Include="..\..\glib\gio\gsettingsschema.h" />
+    <ClInclude Include="..\..\glib\gio\gsimpleaction.h" />
+    <ClInclude Include="..\..\glib\gio\gsimpleactiongroup.h" />
+    <ClInclude Include="..\..\glib\gio\gsimpleasyncresult.h" />
+    <ClInclude Include="..\..\glib\gio\gsimpleiostream.h" />
+    <ClInclude Include="..\..\glib\gio\gsimplepermission.h" />
+    <ClInclude Include="..\..\glib\gio\gsimpleproxyresolver.h" />
+    <ClInclude Include="..\..\glib\gio\gsocket.h" />
+    <ClInclude Include="..\..\glib\gio\gsocketaddress.h" />
+    <ClInclude Include="..\..\glib\gio\gsocketaddressenumerator.h" />
+    <ClInclude Include="..\..\glib\gio\gsocketclient.h" />
+    <ClInclude Include="..\..\glib\gio\gsocketconnectable.h" />
+    <ClInclude Include="..\..\glib\gio\gsocketconnection.h" />
+    <ClInclude Include="..\..\glib\gio\gsocketcontrolmessage.h" />
+    <ClInclude Include="..\..\glib\gio\gsocketinputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gsocketoutputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gsocks4aproxy.h" />
+    <ClInclude Include="..\..\glib\gio\gsocks4proxy.h" />
+    <ClInclude Include="..\..\glib\gio\gsocks5proxy.h" />
+    <ClInclude Include="..\..\glib\gio\gsrvtarget.h" />
+    <ClInclude Include="..\..\glib\gio\gsubprocesslauncher-private.h" />
+    <ClInclude Include="..\..\glib\gio\gtask.h" />
+    <ClInclude Include="..\..\glib\gio\gtcpconnection.h" />
+    <ClInclude Include="..\..\glib\gio\gtcpwrapperconnection.h" />
+    <ClInclude Include="..\..\glib\gio\gthemedicon.h" />
+    <ClInclude Include="..\..\glib\gio\gthreadedresolver.h" />
+    <ClInclude Include="..\..\glib\gio\gtlsbackend.h" />
+    <ClInclude Include="..\..\glib\gio\gtlscertificate.h" />
+    <ClInclude Include="..\..\glib\gio\gtlsclientconnection.h" />
+    <ClInclude Include="..\..\glib\gio\gtlsconnection.h" />
+    <ClInclude Include="..\..\glib\gio\gtlsdatabase.h" />
+    <ClInclude Include="..\..\glib\gio\gtlsfiledatabase.h" />
+    <ClInclude Include="..\..\glib\gio\gtlsinteraction.h" />
+    <ClInclude Include="..\..\glib\gio\gtlspassword.h" />
+    <ClInclude Include="..\..\glib\gio\gtlsserverconnection.h" />
+    <ClInclude Include="..\..\glib\gio\gunionvolumemonitor.h" />
+    <ClInclude Include="..\..\glib\gio\gvfs.h" />
+    <ClInclude Include="..\..\glib\gio\gvolume.h" />
+    <ClInclude Include="..\..\glib\gio\gvolumemonitor.h" />
+    <ClInclude Include="..\..\glib\gio\gwin32appinfo.h" />
+    <ClInclude Include="..\..\glib\gio\gwin32inputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gwin32mount.h" />
+    <ClInclude Include="..\..\glib\gio\gwin32networking.h" />
+    <ClInclude Include="..\..\glib\gio\gwin32networkmonitor.h" />
+    <ClInclude Include="..\..\glib\gio\gwin32outputstream.h" />
+    <ClInclude Include="..\..\glib\gio\gwin32registrykey.h" />
+    <ClInclude Include="..\..\glib\gio\gwin32volumemonitor.h" />
+    <ClInclude Include="..\..\glib\gio\gzlibcompressor.h" />
+    <ClInclude Include="..\..\glib\gio\gzlibdecompressor.h" />
+    <ClInclude Include="..\..\glib\gio\thumbnail-verify.h" />
+    <ClInclude Include="..\..\glib\gio\gvdb\gvdb-builder.h" />
+    <ClInclude Include="..\..\glib\gio\gvdb\gvdb-format.h" />
+    <ClInclude Include="..\..\glib\gio\gvdb\gvdb-reader.h" />
+    <ClInclude Include="..\..\glib\gio\win32\gwin32filemonitor.h" />
+    <ClInclude Include="..\..\glib\gio\win32\gwin32fsmonitorutils.h" />
+    <ClInclude Include="..\..\glib\gio\win32\gwinhttpfile.h" />
+    <ClInclude Include="..\..\glib\gio\win32\gwinhttpfileinputstream.h" />
+    <ClInclude Include="..\..\glib\gio\win32\gwinhttpfileoutputstream.h" />
+    <ClInclude Include="..\..\glib\gio\win32\gwinhttpvfs.h" />
+    <ClInclude Include="..\..\glib\gio\win32\winhttp.h" />
+    <ClInclude Include="..\..\glib\glib\config.h" />
+    <ClInclude Include="..\..\glib\glib\galloca.h" />
+    <ClInclude Include="..\..\glib\glib\garray.h" />
+    <ClInclude Include="..\..\glib\glib\gasyncqueue.h" />
+    <ClInclude Include="..\..\glib\glib\gasyncqueueprivate.h" />
+    <ClInclude Include="..\..\glib\glib\gatomic.h" />
+    <ClInclude Include="..\..\glib\glib\gbacktrace.h" />
+    <ClInclude Include="..\..\glib\glib\gbase64.h" />
+    <ClInclude Include="..\..\glib\glib\gbitlock.h" />
+    <ClInclude Include="..\..\glib\glib\gbookmarkfile.h" />
+    <ClInclude Include="..\..\glib\glib\gbsearcharray.h" />
+    <ClInclude Include="..\..\glib\glib\gbytes.h" />
+    <ClInclude Include="..\..\glib\glib\gcharset.h" />
+    <ClInclude Include="..\..\glib\glib\gcharsetprivate.h" />
+    <ClInclude Include="..\..\glib\glib\gchecksum.h" />
+    <ClInclude Include="..\..\glib\glib\gconstructor.h" />
+    <ClInclude Include="..\..\glib\glib\gconvert.h" />
+    <ClInclude Include="..\..\glib\glib\gdataset.h" />
+    <ClInclude Include="..\..\glib\glib\gdatasetprivate.h" />
+    <ClInclude Include="..\..\glib\glib\gdate.h" />
+    <ClInclude Include="..\..\glib\glib\gdatetime.h" />
+    <ClInclude Include="..\..\glib\glib\gdir.h" />
+    <ClInclude Include="..\..\glib\glib\genviron.h" />
+    <ClInclude Include="..\..\glib\glib\gerror.h" />
+    <ClInclude Include="..\..\glib\glib\gfileutils.h" />
+    <ClInclude Include="..\..\glib\glib\ggettext.h" />
+    <ClInclude Include="..\..\glib\glib\ghash.h" />
+    <ClInclude Include="..\..\glib\glib\ghmac.h" />
+    <ClInclude Include="..\..\glib\glib\ghook.h" />
+    <ClInclude Include="..\..\glib\glib\ghostutils.h" />
+    <ClInclude Include="..\..\glib\glib\gi18n-lib.h" />
+    <ClInclude Include="..\..\glib\glib\gi18n.h" />
+    <ClInclude Include="..\..\glib\glib\giochannel.h" />
+    <ClInclude Include="..\..\glib\glib\gkeyfile.h" />
+    <ClInclude Include="..\..\glib\glib\glib-autocleanups.h" />
+    <ClInclude Include="..\..\glib\glib\glib-init.h" />
+    <ClInclude Include="..\..\glib\glib\glib-object.h" />
+    <ClInclude Include="..\..\glib\glib\glib-private.h" />
+    <ClInclude Include="..\..\glib\glib\glib.h" />
+    <ClInclude Include="..\..\glib\glib\glibconfig.h" />
+    <ClInclude Include="..\..\glib\glib\glibintl.h" />
+    <ClInclude Include="..\..\glib\glib\glib_trace.h" />
+    <ClInclude Include="..\..\glib\glib\glist.h" />
+    <ClInclude Include="..\..\glib\glib\gmacros.h" />
+    <ClInclude Include="..\..\glib\glib\gmain-internal.h" />
+    <ClInclude Include="..\..\glib\glib\gmain.h" />
+    <ClInclude Include="..\..\glib\glib\gmappedfile.h" />
+    <ClInclude Include="..\..\glib\glib\gmarkup.h" />
+    <ClInclude Include="..\..\glib\glib\gmem.h" />
+    <ClInclude Include="..\..\glib\glib\gmessages.h" />
+    <ClInclude Include="..\..\glib\glib\gmirroringtable.h" />
+    <ClInclude Include="..\..\glib\glib\gnode.h" />
+    <ClInclude Include="..\..\glib\glib\goption.h" />
+    <ClInclude Include="..\..\glib\glib\gpattern.h" />
+    <ClInclude Include="..\..\glib\glib\gpoll.h" />
+    <ClInclude Include="..\..\glib\glib\gprimes.h" />
+    <ClInclude Include="..\..\glib\glib\gprintf.h" />
+    <ClInclude Include="..\..\glib\glib\gprintfint.h" />
+    <ClInclude Include="..\..\glib\glib\gqsort.h" />
+    <ClInclude Include="..\..\glib\glib\gquark.h" />
+    <ClInclude Include="..\..\glib\glib\gqueue.h" />
+    <ClInclude Include="..\..\glib\glib\grand.h" />
+    <ClInclude Include="..\..\glib\glib\grcbox.h" />
+    <ClInclude Include="..\..\glib\glib\grcboxprivate.h" />
+    <ClInclude Include="..\..\glib\glib\grefcount.h" />
+    <ClInclude Include="..\..\glib\glib\grefstring.h" />
+    <ClInclude Include="..\..\glib\glib\gregex.h" />
+    <ClInclude Include="..\..\glib\glib\gscanner.h" />
+    <ClInclude Include="..\..\glib\glib\gscripttable.h" />
+    <ClInclude Include="..\..\glib\glib\gsequence.h" />
+    <ClInclude Include="..\..\glib\glib\gshell.h" />
+    <ClInclude Include="..\..\glib\glib\gslice.h" />
+    <ClInclude Include="..\..\glib\glib\gslist.h" />
+    <ClInclude Include="..\..\glib\glib\gspawn-private.h" />
+    <ClInclude Include="..\..\glib\glib\gstdio.h" />
+    <ClInclude Include="..\..\glib\glib\gstdioprivate.h" />
+    <ClInclude Include="..\..\glib\glib\gstrfuncs.h" />
+    <ClInclude Include="..\..\glib\glib\gstring.h" />
+    <ClInclude Include="..\..\glib\glib\gstringchunk.h" />
+    <ClInclude Include="..\..\glib\glib\gtestutils.h" />
+    <ClInclude Include="..\..\glib\glib\gthread.h" />
+    <ClInclude Include="..\..\glib\glib\gthreadpool.h" />
+    <ClInclude Include="..\..\glib\glib\gthreadprivate.h" />
+    <ClInclude Include="..\..\glib\glib\gtimer.h" />
+    <ClInclude Include="..\..\glib\glib\gtimezone.h" />
+    <ClInclude Include="..\..\glib\glib\gtranslit-data.h" />
+    <ClInclude Include="..\..\glib\glib\gtrashstack.h" />
+    <ClInclude Include="..\..\glib\glib\gtree.h" />
+    <ClInclude Include="..\..\glib\glib\gtypes.h" />
+    <ClInclude Include="..\..\glib\glib\gunibreak.h" />
+    <ClInclude Include="..\..\glib\glib\gunichartables.h" />
+    <ClInclude Include="..\..\glib\glib\gunicode.h" />
+    <ClInclude Include="..\..\glib\glib\gunicodeprivate.h" />
+    <ClInclude Include="..\..\glib\glib\gunicomp.h" />
+    <ClInclude Include="..\..\glib\glib\gunidecomp.h" />
+    <ClInclude Include="..\..\glib\glib\gurifuncs.h" />
+    <ClInclude Include="..\..\glib\glib\gutils.h" />
+    <ClInclude Include="..\..\glib\glib\gutilsprivate.h" />
+    <ClInclude Include="..\..\glib\glib\guuid.h" />
+    <ClInclude Include="..\..\glib\glib\gvalgrind.h" />
+    <ClInclude Include="..\..\glib\glib\gvariant-core.h" />
+    <ClInclude Include="..\..\glib\glib\gvariant-internal.h" />
+    <ClInclude Include="..\..\glib\glib\gvariant-serialiser.h" />
+    <ClInclude Include="..\..\glib\glib\gvariant.h" />
+    <ClInclude Include="..\..\glib\glib\gvarianttype.h" />
+    <ClInclude Include="..\..\glib\glib\gvarianttypeinfo.h" />
+    <ClInclude Include="..\..\glib\glib\gversion.h" />
+    <ClInclude Include="..\..\glib\glib\gversionmacros.h" />
+    <ClInclude Include="..\..\glib\glib\gwakeup.h" />
+    <ClInclude Include="..\..\glib\glib\gwin32.h" />
+    <ClInclude Include="..\..\glib\glib\valgrind.h" />
+    <ClInclude Include="..\..\glib\glib\dirent\dirent.h" />
+    <ClInclude Include="..\..\glib\glib\gnulib\arg-nonnull.h" />
+    <ClInclude Include="..\..\glib\glib\gnulib\c++defs.h" />
+    <ClInclude Include="..\..\glib\glib\gnulib\float+.h" />
+    <ClInclude Include="..\..\glib\glib\gnulib\fpucw.h" />
+    <ClInclude Include="..\..\glib\glib\gnulib\g-gnulib.h" />
+    <ClInclude Include="..\..\glib\glib\gnulib\gnulib_math.h" />
+    <ClInclude Include="..\..\glib\glib\gnulib\isnand-nolibm.h" />
+    <ClInclude Include="..\..\glib\glib\gnulib\isnanf-nolibm.h" />
+    <ClInclude Include="..\..\glib\glib\gnulib\isnanl-nolibm.h" />
+    <ClInclude Include="..\..\glib\glib\gnulib\printf-args.h" />
+    <ClInclude Include="..\..\glib\glib\gnulib\printf-frexp.h" />
+    <ClInclude Include="..\..\glib\glib\gnulib\printf-frexpl.h" />
+    <ClInclude Include="..\..\glib\glib\gnulib\printf-parse.h" />
+    <ClInclude Include="..\..\glib\glib\gnulib\printf.h" />
+    <ClInclude Include="..\..\glib\glib\gnulib\vasnprintf.h" />
+    <ClInclude Include="..\..\glib\glib\gnulib\verify.h" />
+    <ClInclude Include="..\..\glib\glib\gnulib\xsize.h" />
+    <ClInclude Include="..\..\glib\glib\libcharset\libcharset.h" />
+    <ClInclude Include="..\..\glib\glib\libcharset\localcharset.h" />
+    <ClInclude Include="..\..\glib\glib\pcre\pcre.h" />
+    <ClInclude Include="..\..\glib\glib\pcre\pcre_internal.h" />
+    <ClInclude Include="..\..\glib\glib\pcre\ucp.h" />
+    <ClInclude Include="..\..\glib\gmodule\gmodule.h" />
+    <ClInclude Include="..\..\glib\gmodule\gmoduleconf.h" />
+    <ClInclude Include="..\..\glib\gobject\gatomicarray.h" />
+    <ClInclude Include="..\..\glib\gobject\gbinding.h" />
+    <ClInclude Include="..\..\glib\gobject\gboxed.h" />
+    <ClInclude Include="..\..\glib\gobject\gclosure.h" />
+    <ClInclude Include="..\..\glib\gobject\genums.h" />
+    <ClInclude Include="..\..\glib\gobject\glib-enumtypes.h" />
+    <ClInclude Include="..\..\glib\gobject\glib-types.h" />
+    <ClInclude Include="..\..\glib\gobject\gmarshal.h" />
+    <ClInclude Include="..\..\glib\gobject\gobject-autocleanups.h" />
+    <ClInclude Include="..\..\glib\gobject\gobject.h" />
+    <ClInclude Include="..\..\glib\gobject\gobject_trace.h" />
+    <ClInclude Include="..\..\glib\gobject\gparam.h" />
+    <ClInclude Include="..\..\glib\gobject\gparamspecs.h" />
+    <ClInclude Include="..\..\glib\gobject\gsignal.h" />
+    <ClInclude Include="..\..\glib\gobject\gsourceclosure.h" />
+    <ClInclude Include="..\..\glib\gobject\gtype-private.h" />
+    <ClInclude Include="..\..\glib\gobject\gtype.h" />
+    <ClInclude Include="..\..\glib\gobject\gtypemodule.h" />
+    <ClInclude Include="..\..\glib\gobject\gtypeplugin.h" />
+    <ClInclude Include="..\..\glib\gobject\gvalue.h" />
+    <ClInclude Include="..\..\glib\gobject\gvaluearray.h" />
+    <ClInclude Include="..\..\glib\gobject\gvaluecollector.h" />
+    <ClInclude Include="..\..\glib\gobject\gvaluetypes.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\libffi\libffi.vcxproj">
+      <Project>{19b738d0-e67d-429d-9f8f-fb39b2c79337}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\zlib\zlib.vcxproj">
+      <Project>{00016ce9-5fd5-46d7-891c-28c91a62fec8}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
