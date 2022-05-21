@@ -92,7 +92,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>LIBICONV_STATIC;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;G_DISABLE_DEPRECATED;G_LOG_DOMAIN="GMime";WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);LIBICONV_STATIC;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;G_DISABLE_DEPRECATED;G_LOG_DOMAIN="GMime"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>LIBICONV_STATIC;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;GLIB_DISABLE_DEPRECATION_WARNINGS;G_LOG_DOMAIN="GMime";WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>..\..\gmime;..\..\gmime\util;..\..\glib;..\..\glib\glib;..\..\glib\glib\gio;..\..\glib\gmodule;..\..\libiconv;..\..\libiconv\iconv;..\..\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -122,7 +122,7 @@ copy unistd.h ..\..\gmime\unistd.h
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>LIBICONV_STATIC;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;G_DISABLE_DEPRECATED;G_LOG_DOMAIN="GMime";WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions);LIBICONV_STATIC;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;G_DISABLE_DEPRECATED;G_LOG_DOMAIN="GMime"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>LIBICONV_STATIC;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;GLIB_DISABLE_DEPRECATION_WARNINGS;G_LOG_DOMAIN="GMime";WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\..\gmime;..\..\gmime\util;..\..\glib;..\..\glib\glib;..\..\glib\glib\gio;..\..\glib\gmodule;..\..\libiconv;..\..\libiconv\iconv;..\..\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8</AdditionalOptions>
@@ -151,7 +151,7 @@ copy unistd.h ..\..\gmime\unistd.h
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>LIBICONV_STATIC;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;G_DISABLE_DEPRECATED;G_LOG_DOMAIN="GMime";_DEBUG;_LIB;%(PreprocessorDefinitions);LIBICONV_STATIC;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;G_DISABLE_DEPRECATED;G_LOG_DOMAIN="GMime"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>LIBICONV_STATIC;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;GLIB_DISABLE_DEPRECATION_WARNINGS;G_LOG_DOMAIN="GMime";_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>..\..\gmime;..\..\gmime\util;..\..\glib;..\..\glib\glib;..\..\glib\glib\gio;..\..\glib\gmodule;..\..\libiconv;..\..\libiconv\iconv;..\..\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -181,7 +181,7 @@ copy unistd.h ..\..\gmime\unistd.h
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>LIBICONV_STATIC;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;G_DISABLE_DEPRECATED;G_LOG_DOMAIN="GMime";NDEBUG;_LIB;%(PreprocessorDefinitions);LIBICONV_STATIC;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;G_DISABLE_DEPRECATED;G_LOG_DOMAIN="GMime"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>LIBICONV_STATIC;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;GLIB_DISABLE_DEPRECATION_WARNINGS;G_LOG_DOMAIN="GMime";NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\..\gmime;..\..\gmime\util;..\..\glib;..\..\glib\glib;..\..\glib\glib\gio;..\..\glib\gmodule;..\..\libiconv;..\..\libiconv\iconv;..\..\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8</AdditionalOptions>
@@ -349,11 +349,11 @@ copy unistd.h ..\..\gmime\unistd.h
     <ClCompile Include="..\..\gmime\gmime\internet-address.c" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\libiconv\libiconv.vcxproj">
-      <Project>{6eb3c2ba-e883-409b-86d8-60aaa2fc98bb}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\glib\glib.vcxproj">
       <Project>{ccbf709c-2665-4463-a8ee-e72995e001b4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libiconv\libiconv.vcxproj">
+      <Project>{6eb3c2ba-e883-409b-86d8-60aaa2fc98bb}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
