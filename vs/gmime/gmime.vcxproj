@@ -98,6 +98,7 @@
       <AdditionalIncludeDirectories>..\..\gmime;..\..\gmime\util;..\..\glib;..\..\glib\glib;..\..\glib\glib\gio;..\..\glib\gmodule;..\..\libiconv;..\..\libiconv\iconv;..\..\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8</AdditionalOptions>
       <DisableSpecificWarnings>4703</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -127,6 +128,7 @@ copy unistd.h ..\..\gmime\unistd.h
       <AdditionalIncludeDirectories>..\..\gmime;..\..\gmime\util;..\..\glib;..\..\glib\glib;..\..\glib\glib\gio;..\..\glib\gmodule;..\..\libiconv;..\..\libiconv\iconv;..\..\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8</AdditionalOptions>
       <DisableSpecificWarnings>4703</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -157,6 +159,7 @@ copy unistd.h ..\..\gmime\unistd.h
       <AdditionalIncludeDirectories>..\..\gmime;..\..\gmime\util;..\..\glib;..\..\glib\glib;..\..\glib\glib\gio;..\..\glib\gmodule;..\..\libiconv;..\..\libiconv\iconv;..\..\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8</AdditionalOptions>
       <DisableSpecificWarnings>4703</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -186,6 +189,7 @@ copy unistd.h ..\..\gmime\unistd.h
       <AdditionalIncludeDirectories>..\..\gmime;..\..\gmime\util;..\..\glib;..\..\glib\glib;..\..\glib\glib\gio;..\..\glib\gmodule;..\..\libiconv;..\..\libiconv\iconv;..\..\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8</AdditionalOptions>
       <DisableSpecificWarnings>4703</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>
