@@ -52,8 +52,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\libffi\src\x86\win32.asm">
+    <CustomBuild Include="..\..\..\libffi\src\x86\win32.asm">
       <Filter>源文件</Filter>
-    </None>
+    </CustomBuild>
   </ItemGroup>
 </Project>
