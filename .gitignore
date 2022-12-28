@@ -351,6 +351,8 @@ MigrationBackup/
 
 
 !/vs
+!/vs/x64
+!/vs/x86
 !/vs/glib
 !/vs/gmime
 !/vs/libffi
