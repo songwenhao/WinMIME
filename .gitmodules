@@ -1,15 +1,9 @@
 [submodule "gmime"]
 	path = gmime
 	url = https://github.com/songwenhao/gmime.git
-[submodule "glib"]
-	path = glib
-	url = https://github.com/ImageMagick/glib.git
 [submodule "zlib"]
 	path = zlib
 	url = https://github.com/ImageMagick/zlib.git
-[submodule "libffi"]
-	path = libffi
-	url = https://github.com/ImageMagick/ffi.git
 [submodule "libiconv"]
 	path = libiconv
 	url = https://github.com/songwenhao/libiconv.git
