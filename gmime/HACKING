@@ -1,0 +1,5 @@
+Rules for commits on the gmime module
+=====================================
+
+Please try to conform to the same coding conventions used within
+this module (such as tab-width, brace location, and white-space).

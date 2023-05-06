@@ -1,0 +1,175 @@
+### GMime 3.2.8
+
+* Various fixes to Vala (and other?) language bindings. (issue #96 and issue #101)
+
+* Enabled build for PPC64LE architecture (issue #100)
+
+* Added g_mime_object_write_content_to_stream() (issue #97)
+
+* Fixed parameter list parsing logic to not report a warning when everything is valid.
+
+* Fixed the parser to handle MIME parts without headers -or- content of any kind.
+
+### GMime 3.2.7
+
+* Added some configure logic to auto-detect the system shift-jis charset alias. (issue #81)
+
+* Fixed tests/Makefile.am to exit with a non-negative value (issue #82)
+
+* Fixed logic to skip expired or revoked gpg subkeys when looking for the correct subkey to
+  use for signing or encrypting. (issue #88)
+
+* Fixed a regression introduced into 3.2.6 as part of the header parsder rewrite that lost
+  the ability to warn about invalid headers for non-toplevel MIME parts. (issue #89)
+
+* Fixed S/MIME to always set GPGME_KEYLIST_MODE_VALIDATE when looking up certificates
+  as this is needed in order to correctly populate the GMimeCertificates (issue #90)
+
+### GMime 3.2.6
+
+* Added methods to get 64-bit timestamps for the creation-date and expiration-date of
+  GMimeCertificates and GMimeSignatures. (issue #68)
+
+* Fixed the vala abstract public constructor for GMimeObject. (issue #76)
+
+* Fixed a bug in GMimeParser's header parser. (issue #78)
+
+* Added build files for Visual Studio 2017 thanks to Vitaliy Didik.
+
+### GMime 3.2.5
+
+*  Modified GMimeParser to prevent stack overflows when parsing deeply nested messages.
+
+     GMimeParser now has a limit on how deep multipart and/or message/rfc822 MIME part
+     nesting is allowed to go before the parser will take action to prevent a stack
+     overflow. If the max level is reached at a message/rfc822 part, then that part
+     will be consumed by the parser as a generic GMimePart rather than a
+     GMimeMessagePart. Likewise, if the max level is reached at any type of multipart,
+     then the content of said multipart will be packed into the GMimeMultipart's
+     preface and not parsed any further.
+
+* g_mime_multipart_foreach has been rewritten to avoid recursion, thereby avoiding potential
+  stack overflows.
+
+* The gmime-port-2-6-to-3-0.sh script has been fixed to use proper sed syntax.
+
+### GMime 3.2.4
+
+* Replaced calls to g_memmove with memmove.
+
+    It seems that the latest versions of glib have deprecated g_memmove
+    in favor of having developers use libc's memmove() function directly.
+    This change reduces the number of compiler warnings during the gmime
+    build process.
+
+* Added a new GMIME_DECRYPT_NO_VERIFY flag that disables signature verification.
+
+    For cases where it is not necessary to verify the signatures (or it is known
+    that there are no signatures), making use of this flag can significantly
+    improve the performance of decrypting OpenPGP content.
+
+* Modified GMimeParser to not set the OpenPGP state for base64/uuencoded content.
+
+    While the GMimeParser is parsing a MIME message (or other MIME entity), it will
+    normally attempt to identify OpenPGP markers in the content of GMimeParts.
+    However, when the content is base64 or uu-encoded, the parser is unable to
+    accurately detect these markers and so in previous versions, it was falsely
+    claiming that such MIME parts had no OpenPGP content even though it was possible,
+    after decoding their content, that they did in fact have OpenPGP content.
+
+    For more details about this bug, see issue #60.
+
+* Added reporting of RFC 5322 addr-spec syntax violations to the GMimeParserWarning API.
+
+* Fixed a stack underflow error in the uudecode.c sample.
+
+* Improved Vala bindings.
+
+    - Use correct symbol prefixes which avoid loads of cname attributes.
+    - Unhide FilterBest.charset() method which conflicts with charset field.
+    - Object.write_to_stream conflicts with function pointer with the same name
+      but with a different signature.
+
+    Fixes https://gitlab.gnome.org/GNOME/gmime/issues/2
+    Fixes https://gitlab.gnome.org/GNOME/gmime/issues/3
+
+### GMime 3.2.3
+
+* Fixed GMimeFilterBasic for uudecode.
+
+    Don't allow the outbuf to ever get set to NULL which could happen
+    if the begin-line had not yet been found (and thus
+    g_mime_filter_set_size() had never been called to allocate the
+    outbuf buffer).
+
+ * Fixed a bug in g_mime_uuencode_step().
+
+ * Modified GMimeParser to work around broken mailers that send base64
+   encoded message/rfc822 parts.
+
+   Fixes https://gitlab.gnome.org/GNOME/gmime/issues/1
+
+ * Fixed a bug in g_mime_quoted_encode_close() where it would incorrectly
+   end the quoted-printable output with a line containing only "=\n" even
+   when it is not needed.
+
+ * Improved g_mime_content_encoding_from_string(). This function no
+   longer requires the input string to be an exact match for "7bit",
+   "8bit", "base64", etc. It can now handle whitespace before and
+   after the value. In other words, it is now easy to use this
+   function on raw header values before any whitespace trimming
+   has been done.
+
+ * Really, really fixed the packaging to include the Vala build files.
+
+### GMime 3.2.2
+
+* Fixed packaging to include Vala files.
+
+### GMime 3.2.1
+
+* Fixed GMimeParser to recognize the message/global mime-type
+  (a UTF-8 version of message/rfc822). (issue #50)
+
+* Updated GMime to use libidn2 instead of the older libidn
+  library. (issue #48)
+
+* Fixed address quoting logic and IDN2 encoding.
+
+    The rules for quoting address names should use 'specials'
+    instead of 'tspecials' and when encoding domain names via
+    IDN2, check if the encoded domain matches the original
+    domain name (other than case). If they match, prefer the
+    non-encoded domain name since the user may have used
+    uppercase characters to enhance readability of the domain
+    name.
+
+* Added GMIME_DECRYPT_ENABLE_ONLINE_CERTIFICATE_CHECKS and
+  GMIME_DECRYPT_ENABLE_KEYSERVER_LOOKUPS as possible flags to
+  pass to g_mime_crypto_context_decrypt(). Also added
+  GMIME_VERIFY_ENABLE_ONLINE_CERTIFICATE_CHECKS and
+  GMIME_VERIFY_ENABLE_KEYSERVER_LOOKUPS as possible flags to
+  pass to g_mime_crypto_context_verify().
+
+    Clients that wish to enable online certificate and/or
+    keyserver lookups now need to explicitly enable this
+    functionality.
+    
+    These changes are designed to make it more difficult
+    for clients to be susceptible to Efail privacy exploits.
+    Specifically, it is meant to address the privacy concerns
+    regarding CRL and OCSP status check backchannels.
+
+    For more information about Efail, see https://www.efail.de/
+
+* Fixed g_mime_message_write_to_stream() to prioritize message
+  headers over body headers (even when they have an offset of -1).
+  (issue #46)
+
+* The GMimeParser can now warn about a number of RFC-compliance
+  issues that it finds when parsing messages.
+
+* Fixed GMimeTextPart to make sure that the GMimeFilterCharset is
+  non-null before trying to use it. This can happen if the charset
+  specified in the Content-Type header is unsupported by the
+  iconv library.

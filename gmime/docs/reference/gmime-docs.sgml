@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY gmime-Init SYSTEM "xml/gmime.xml">
+<!ENTITY GMimeApplicationPkcs7Mime SYSTEM "xml/gmime-application-pkcs7-mime.xml">
+<!ENTITY GMimeAutocrypt SYSTEM "xml/gmime-autocrypt.xml">
+<!ENTITY GMimeParam SYSTEM "xml/gmime-param.xml">
+<!ENTITY GMimeHeader SYSTEM "xml/gmime-header.xml">
+<!ENTITY GMimeContentType SYSTEM "xml/gmime-content-type.xml">
+<!ENTITY GMimeDisposition SYSTEM "xml/gmime-disposition.xml">
+<!ENTITY GMimeObject SYSTEM "xml/gmime-object.xml">
+<!ENTITY GMimeDataWrapper SYSTEM "xml/gmime-data-wrapper.xml">
+<!ENTITY GMimeMultipart SYSTEM "xml/gmime-multipart.xml">
+<!ENTITY GMimeMultipartEncrypted SYSTEM "xml/gmime-multipart-encrypted.xml">
+<!ENTITY GMimeMultipartSigned SYSTEM "xml/gmime-multipart-signed.xml">
+<!ENTITY GMimePart SYSTEM "xml/gmime-part.xml">
+<!ENTITY GMimeTextPart SYSTEM "xml/gmime-text-part.xml">
+<!ENTITY GMimePartIter SYSTEM "xml/gmime-part-iter.xml">
+<!ENTITY GMimeMessage SYSTEM "xml/gmime-message.xml">
+<!ENTITY GMimeMessagePart SYSTEM "xml/gmime-message-part.xml">
+<!ENTITY GMimeMessagePartial SYSTEM "xml/gmime-message-partial.xml">
+<!ENTITY gmime-utils SYSTEM "xml/gmime-utils.xml">
+<!ENTITY gmime-encodings SYSTEM "xml/gmime-encodings.xml">
+<!ENTITY InternetAddress SYSTEM "xml/internet-address.xml">
+<!ENTITY InternetAddressGroup SYSTEM "xml/internet-address-group.xml">
+<!ENTITY InternetAddressMailbox SYSTEM "xml/internet-address-mailbox.xml">
+<!ENTITY InternetAddressList SYSTEM "xml/internet-address-list.xml">
+<!ENTITY GMimeFormatOptions SYSTEM "xml/gmime-format-options.xml">
+<!ENTITY GMimeParserOptions SYSTEM "xml/gmime-parser-options.xml">
+<!ENTITY GMimeParser SYSTEM "xml/gmime-parser.xml">
+<!ENTITY gmime-charset SYSTEM "xml/gmime-charset.xml">
+<!ENTITY gmime-iconv SYSTEM "xml/gmime-iconv.xml">
+<!ENTITY gmime-iconv-utils SYSTEM "xml/gmime-iconv-utils.xml">
+<!ENTITY GMimeReferences SYSTEM "xml/gmime-references.xml">
+<!ENTITY GMimeStream SYSTEM "xml/gmime-stream.xml">
+<!ENTITY GMimeStreamBuffer SYSTEM "xml/gmime-stream-buffer.xml">
+<!ENTITY GMimeStreamCat SYSTEM "xml/gmime-stream-cat.xml">
+<!ENTITY GMimeStreamFile SYSTEM "xml/gmime-stream-file.xml">
+<!ENTITY GMimeStreamFs SYSTEM "xml/gmime-stream-fs.xml">
+<!ENTITY GMimeStreamGIO SYSTEM "xml/gmime-stream-gio.xml">
+<!ENTITY GMimeStreamMem SYSTEM "xml/gmime-stream-mem.xml">
+<!ENTITY GMimeStreamMmap SYSTEM "xml/gmime-stream-mmap.xml">
+<!ENTITY GMimeStreamNull SYSTEM "xml/gmime-stream-null.xml">
+<!ENTITY GMimeStreamPipe SYSTEM "xml/gmime-stream-pipe.xml">
+<!ENTITY GMimeStreamFilter SYSTEM "xml/gmime-stream-filter.xml">
+<!ENTITY GMimeFilter SYSTEM "xml/gmime-filter.xml">
+<!ENTITY GMimeFilterBasic SYSTEM "xml/gmime-filter-basic.xml">
+<!ENTITY GMimeFilterBest SYSTEM "xml/gmime-filter-best.xml">
+<!ENTITY GMimeFilterCharset SYSTEM "xml/gmime-filter-charset.xml">
+<!ENTITY GMimeFilterChecksum SYSTEM "xml/gmime-filter-checksum.xml">
+<!ENTITY GMimeFilterDos2Unix SYSTEM "xml/gmime-filter-dos2unix.xml">
+<!ENTITY GMimeFilterEnriched SYSTEM "xml/gmime-filter-enriched.xml">
+<!ENTITY GMimeFilterFrom SYSTEM "xml/gmime-filter-from.xml">
+<!ENTITY GMimeFilterGZip SYSTEM "xml/gmime-filter-gzip.xml">
+<!ENTITY GMimeFilterHTML SYSTEM "xml/gmime-filter-html.xml">
+<!ENTITY GMimeFilterOpenPGP SYSTEM "xml/gmime-filter-openpgp.xml">
+<!ENTITY GMimeFilterSmtpData SYSTEM "xml/gmime-filter-smtp-data.xml">
+<!ENTITY GMimeFilterStrip SYSTEM "xml/gmime-filter-strip.xml">
+<!ENTITY GMimeFilterUnix2Dos SYSTEM "xml/gmime-filter-unix2dos.xml">
+<!ENTITY GMimeFilterWindows SYSTEM "xml/gmime-filter-windows.xml">
+<!ENTITY GMimeFilterYenc SYSTEM "xml/gmime-filter-yenc.xml">
+<!ENTITY GMimeCertificate SYSTEM "xml/gmime-certificate.xml">
+<!ENTITY GMimeSignature SYSTEM "xml/gmime-signature.xml">
+<!ENTITY GMimeCryptoContext SYSTEM "xml/gmime-crypto-context.xml">
+<!ENTITY GMimeGpgContext SYSTEM "xml/gmime-gpg-context.xml">
+<!ENTITY GMimePkcs7Context SYSTEM "xml/gmime-pkcs7-context.xml">
+<!ENTITY GMimeAutocrypt SYSTEM "xml/gmime-autocrypt.xml">
+
+<!ENTITY index-Class-Tree SYSTEM "tree_index.sgml">
+
+<!ENTITY gmime-Building SYSTEM "building.sgml">
+<!ENTITY gmime-Compiling SYSTEM "compiling.sgml">
+<!ENTITY gmime-Resources SYSTEM "resources.sgml">
+<!ENTITY gmime-Questions SYSTEM "question_index.sgml">
+<!ENTITY gmime-Changes-2-0 SYSTEM "changes-2.0.sgml">
+<!ENTITY gmime-Changes-2-2 SYSTEM "changes-2.2.sgml">
+<!ENTITY gmime-Changes-2-4 SYSTEM "changes-2.4.sgml">
+<!ENTITY gmime-Changes-2-6 SYSTEM "changes-2.6.sgml">
+<!ENTITY gmime-Changes-3-0 SYSTEM "changes-3.0.sgml">
+
+<!ENTITY gmime-Streams SYSTEM "streams.sgml">
+<!ENTITY gmime-Filters SYSTEM "filters.sgml">
+<!ENTITY gmime-DataWrappers SYSTEM "data-wrappers.sgml">
+]>
+
+<book id="index">
+  <bookinfo>
+    <title>GMime 3.0 Reference Manual</title>
+    <authorgroup>
+      <author>
+        <firstname>Jeffrey</firstname>
+        <surname>Stedfast</surname>
+        <affiliation>
+          <address>
+            <email>fejj@gnome.org</email>
+          </address>
+        </affiliation>
+      </author>
+    </authorgroup>
+    <copyright>
+      <year>2000-2017</year>
+      <holder>Jeffrey Stedfast</holder>
+    </copyright>
+
+    <legalnotice>
+      <para>
+        This library is free software; you can redistribute it and/or
+        modify it under the terms of the GNU Lesser General Public
+        License as published by the Free Software Foundation; either
+        version 2.1 of the License, or (at your option) any later version.
+      </para>
+      <para>
+        This library is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+        Lesser General Public License for more details.
+      </para>
+      <para>
+        You should have received a copy of the GNU Lesser General Public
+        License along with this library; if not, write to the Free Software
+        Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+        02110-1301, USA.
+      </para>
+    </legalnotice>
+
+    <abstract>
+      <para>This manual documents the interfaces of the GMime
+      library and has some short notes to help get you up to speed
+      with using the library.</para>
+    </abstract>
+  </bookinfo>
+
+  <part id="gmime">
+    <title>GMime Overview</title>
+    <partintro>
+      <para>
+GMime is a powerful MIME (Multipurpose Internet Mail Extension)
+utility library. It is meant for creating, editing, and parsing MIME
+messages and structures. GMime is released under the 2.1 version of
+the GNU Lesser General Public License. GMime is based on GLib 2.0's
+GObject system allowing for a lot of flexibility.
+      </para>
+      <para>
+GMime depends on the following libraries:
+        <variablelist>
+          <varlistentry>
+            <term>GLib</term>
+            <listitem>
+              <para>
+A general-purpose utility library, not specific to graphical user interfaces.
+GLib provides many useful data types, macros, type conversions,
+string utilities, file utilities, a main loop abstraction, and so on.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </para>
+    </partintro>
+    &gmime-Building;
+    &gmime-Compiling;
+    &gmime-Changes-2-0;
+    &gmime-Changes-2-2;
+    &gmime-Changes-2-4;
+    &gmime-Changes-2-6;
+    &gmime-Changes-3-0;
+    &gmime-Resources;
+    &gmime-Questions;
+  </part>
+
+  <part id="fundamentals">
+    <title>GMime Fundamentals</title>
+    &gmime-Streams;
+    &gmime-Filters;
+    &gmime-DataWrappers;
+  </part>
+
+  <part id="core">
+    <title>GMime Core Reference</title>
+    &gmime-Init;
+    &gmime-charset;
+    &gmime-iconv;
+    &gmime-iconv-utils;
+    &gmime-encodings;
+    &gmime-utils;
+    &GMimeReferences;
+    &GMimeFormatOptions;
+    &GMimeAutocrypt;
+  </part>
+
+  <part id="classes">
+    <title>GMime Classes</title>
+    <chapter>
+      <title>Class hierarchy</title>
+      &index-Class-Tree;
+    </chapter>
+
+    <chapter id="Streams">
+      <title>Streams</title>
+      &GMimeStream;
+      &GMimeStreamFile;
+      &GMimeStreamFs;
+      &GMimeStreamGIO;
+      &GMimeStreamMem;
+      &GMimeStreamMmap;
+      &GMimeStreamNull;
+      &GMimeStreamFilter;
+      &GMimeStreamBuffer;
+      &GMimeStreamPipe;
+      &GMimeStreamCat;
+    </chapter>
+
+    <chapter id="Filters">
+      <title>Stream Filters</title>
+      &GMimeFilter;
+      &GMimeFilterBasic;
+      &GMimeFilterBest;
+      &GMimeFilterCharset;
+      &GMimeFilterChecksum;
+      &GMimeFilterDos2Unix;
+      &GMimeFilterEnriched;
+      &GMimeFilterFrom;
+      &GMimeFilterGZip;
+      &GMimeFilterHTML;
+      &GMimeFilterOpenPGP;
+      &GMimeFilterSmtpData;
+      &GMimeFilterStrip;
+      &GMimeFilterUnix2Dos;
+      &GMimeFilterWindows;
+      &GMimeFilterYenc;
+    </chapter>
+
+    <chapter id="DataWrappers">
+      <title>Data Wrappers</title>
+      &GMimeDataWrapper;
+    </chapter>
+
+    <chapter id="Headers">
+      <title>Message and MIME Headers</title>
+      &GMimeHeader;
+      &GMimeContentType;
+      &GMimeDisposition;
+      &GMimeParam;
+    </chapter>
+
+    <chapter id="InternetAddresses">
+      <title>Internet Addresses</title>
+      &InternetAddress;
+      &InternetAddressGroup;
+      &InternetAddressMailbox;
+      &InternetAddressList;
+    </chapter>
+
+    <chapter id="MimeParts">
+      <title>MIME Messages and Parts</title>
+      &GMimeObject;
+      &GMimeMessage;
+      &GMimePart;
+      &GMimeTextPart;
+      &GMimeMultipart;
+      &GMimeMultipartEncrypted;
+      &GMimeMultipartSigned;
+      &GMimeApplicationPkcs7Mime;
+      &GMimeMessagePart;
+      &GMimeMessagePartial;
+      &GMimePartIter;
+    </chapter>
+
+    <chapter id="Parsers">
+      <title>Parsing Messages and MIME Parts</title>
+      &GMimeParserOptions;
+      &GMimeParser;
+    </chapter>
+
+    <chapter id="CryptoContexts">
+      <title>Cryptography Contexts</title>
+      &GMimeCertificate;
+      &GMimeSignature;
+      &GMimeCryptoContext;
+      &GMimeGpgContext;
+      &GMimePkcs7Context;
+    </chapter>
+  </part>
+</book>

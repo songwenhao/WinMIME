@@ -1,0 +1,36 @@
+message offsets: 0, 526
+header offsets: 8, 216
+From - 
+From: fejj@gnome.org
+To: fejj@gnome.org
+Subject: this'll probably break a lot of mime parsers
+Date: Fri, 23 Aug 2002 02:32:53 -0400
+Content-Type: multipart/mixed
+   Content-Type: multipart/mixed
+      Content-Type: multipart/mixed
+         Content-Type: text/plain
+
+message offsets: 526, 1029
+header offsets: 534, 728
+From - 
+From: fejj@gnome.org
+To: fejj@gnome.org
+Subject: this'll probably break even more mime parsers
+Date: Fri, 23 Aug 2002 02:32:53 -0400
+Content-Type: multipart/mixed
+   Content-Type: multipart/mixed
+      Content-Type: multipart/mixed
+         Content-Type: text/plain
+
+message offsets: 1029, 1535
+header offsets: 1037, 1242
+From - 
+From: fejj@gnome.org
+To: fejj@gnome.org
+Subject: if a mime parser can correctly handle this, I'm impressed
+Date: Fri, 23 Aug 2002 02:32:53 -0400
+Content-Type: multipart/mixed
+   Content-Type: multipart/mixed
+      Content-Type: multipart/mixed
+         Content-Type: text/plain
+

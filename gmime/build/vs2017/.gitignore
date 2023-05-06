@@ -1,0 +1,9 @@
+Makefile.in
+Makefile
+
+.vs/
+Debug*/
+Release*/
+*.user
+
+!config.h

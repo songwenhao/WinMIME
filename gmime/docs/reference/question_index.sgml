@@ -1,0 +1,78 @@
+<refentry id="gmime-question-index" revision="1 Feb 2003">
+  <refmeta>
+    <refentrytitle>Frequently Asked Questions</refentrytitle>
+    <manvolnum>3</manvolnum>
+    <refmiscinfo>Frequently Asked Questions</refmiscinfo>
+  </refmeta>
+  <refnamediv>
+    <refname>Frequently Asked Questions</refname>
+    <refpurpose>
+Find answers to common questions in the GMime manual
+</refpurpose>
+  </refnamediv>
+  <refsect1>
+    <title>Questions and Answers</title>
+    <para>This is an "index" of the reference manual
+    organized by common "How do I..." questions. If you
+    aren't sure which documentation to read for the question you have,
+    this list is a good place to start.
+    </para>
+    <qandaset>
+      <qandadiv>
+        <title>General</title>
+        <qandaentry>
+          <question><para>Where can I get help with GMime, submit a bug report, or make a feature request?</para></question>
+          <answer>
+            <para>See the <link
+            linkend="gmime-resources">documentation on this
+            topic</link>.</para>
+          </answer>
+        </qandaentry>
+        <qandaentry>
+          <question><para>How do I port from one GMime version to another?</para></question>
+          <answer>
+            <para>See the <link linkend="gmime-changes-3-0">list of
+            incompatible changes from 2.6 to 3.0</link>.</para>
+          </answer>
+        </qandaentry>
+        <qandaentry>
+          <question><para>How does memory management work in GMime? Should I free data returned from functions?</para></question>
+          <answer>
+	    <para>Most accessor functions return a pointer to internal
+	    members. When these internal members are objects
+	    themselves (e.g. subclasses
+	    of <ulink url="http://developer.gnome.org/doc/API/2.0/gobject/gobject-The-Base-Object-Type.html">GObject</ulink>),
+	    there is no need to unref them unless otherwise stated in
+	    the documentation for that particular function.</para>
+            <para>For accessor functions that return strings, they will be
+            declared "const" if they should not be freed. Non-const
+            strings should be freed with <ulink
+            url="http://developer.gnome.org/doc/API/2.0/glib/glib-Memory-Allocation.html#g-free">g_free()</ulink>.</para>
+          </answer>
+        </qandaentry>
+        <qandaentry>
+          <question><para>How do I use GMime with threads?</para></question>
+          <answer>
+            <para>First, read the <ulink
+            url="http://developer.gnome.org/doc/API/2.0/glib/glib-Threads.html">GThread</ulink> documentation for
+            portable threading primitives.</para>
+            <para>Objects subclassing 
+            <ulink url="http://developer.gnome.org/doc/API/2.0/gobject/gobject-The-Base-Object-Type.html">GObject</ulink>
+            are not thread-safe. This means that you'll have to do your own mutex
+            locking if you want to access the same GObjects from
+            multiple threads.
+            </para>
+          </answer>
+        </qandaentry>
+        <qandaentry>
+          <question><para>How do I use GMime with C++?</para></question>
+          <answer>
+            <para>The GMime header files use the subset of C that's
+            also valid C++, so you can simply use the normal GMime API
+            in a C++ program.</para>
+          </answer>
+        </qandaentry>
+      </qandadiv>
+    </qandaset>
+  </refsect1>
+</refentry>
