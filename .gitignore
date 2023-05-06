@@ -356,4 +356,6 @@ MigrationBackup/
 !/vs/glib
 !/vs/gmime
 !/vs/libffi
+!libffi/src/arm
+!libffi/src/x86
 !/vs/zlib
