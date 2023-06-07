@@ -140,6 +140,7 @@
       <AdditionalOptions>/utf-8</AdditionalOptions>
       <DisableSpecificWarnings>4146;4996;4244;4703</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -159,6 +160,7 @@
       <AdditionalOptions>/utf-8</AdditionalOptions>
       <DisableSpecificWarnings>4146;4996;4244;4703</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
