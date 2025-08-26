@@ -136,7 +136,12 @@ char *g_mime_object_get_headers (GMimeObject *object, GMimeFormatOptions *option
 ssize_t g_mime_object_write_to_stream (GMimeObject *object, GMimeFormatOptions *options, GMimeStream *stream);
 ssize_t g_mime_object_write_content_to_stream (GMimeObject *object, GMimeFormatOptions *options, GMimeStream *stream);
 char *g_mime_object_to_string(GMimeObject *object, GMimeFormatOptions *options);
-char *g_mime_object_to_string_with_attachfile(const wchar_t *attach_dirpath_utf16, GMimeObject *object, GMimeFormatOptions *options);
+
+#if defined(_MSC_VER)
+char* g_mime_object_to_string_with_attachfile(const wchar_t* attach_dirpath_utf16, GMimeObject* object, GMimeFormatOptions* options);
+#else
+char* g_mime_object_to_string_with_attachfile(const char* attach_dirpath_utf8, GMimeObject* object, GMimeFormatOptions* options);
+#endif
 
 void g_mime_object_encode (GMimeObject *object, GMimeEncodingConstraint constraint);
 

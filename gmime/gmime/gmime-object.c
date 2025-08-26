@@ -1068,6 +1068,7 @@ g_mime_object_to_string (GMimeObject *object, GMimeFormatOptions *options)
 	return str;
 }
 
+#if defined(_MSC_VER)
 char *g_mime_object_to_string_with_attachfile(const wchar_t *attach_dirpath_utf16, GMimeObject *object, GMimeFormatOptions *options) {
     GMimeStream *stream;
     GByteArray *array;
@@ -1089,6 +1090,29 @@ char *g_mime_object_to_string_with_attachfile(const wchar_t *attach_dirpath_utf1
 
     return str;
 }
+#else
+char* g_mime_object_to_string_with_attachfile(const char* attach_dirpath_utf8, GMimeObject* object, GMimeFormatOptions* options) {
+    GMimeStream* stream;
+    GByteArray* array;
+    char* str;
+
+    g_return_val_if_fail(GMIME_IS_OBJECT(object), NULL);
+
+    array = g_byte_array_new();
+    stream = g_mime_stream_mem_new();
+    stream->attach_dirpath_utf8 = attach_dirpath_utf8;
+    g_mime_stream_mem_set_byte_array(GMIME_STREAM_MEM(stream), array);
+
+    g_mime_object_write_to_stream(object, options, stream);
+
+    g_object_unref(stream);
+    g_byte_array_append(array, (unsigned char*)"", 1);
+    str = (char*)array->data;
+    g_byte_array_free(array, FALSE);
+
+    return str;
+}
+#endif
 
 /**
  * g_mime_object_get_header_list:

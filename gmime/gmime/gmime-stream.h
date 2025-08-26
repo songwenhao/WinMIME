@@ -86,7 +86,8 @@ struct _GMimeStream {
 	gint64 bound_start;
 	gint64 bound_end;
 
-    const wchar_t *attach_dirpath_utf16;
+    const char* attach_dirpath_utf8;
+    const wchar_t* attach_dirpath_utf16;
 };
 
 struct _GMimeStreamClass {

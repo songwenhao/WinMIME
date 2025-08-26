@@ -30,6 +30,11 @@
 #include "gmime-common.h"
 #include "gmime-utils.h"
 
+#if defined(_MSC_VER)
+#include <direct.h>
+#else
+#define _stricmp strcasecmp
+#endif
 
 #define d(x)
 

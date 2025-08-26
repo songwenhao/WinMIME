@@ -23,7 +23,12 @@
 #include <config.h>
 #endif
 
+#if defined(_MSC_VER)
 #include <direct.h>
+#else
+#define _stricmp strcasecmp
+#endif
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
@@ -289,14 +294,14 @@ mime_part_headers_cleared (GMimeObject *object)
 	GMIME_OBJECT_CLASS (parent_class)->headers_cleared (object);
 }
 
-static char * FindCharset(
+static char * find_charset(
     const char *buffer
 ) {
     /*find charset */
     char *begin, *end;
     char charset[16];
     memset(charset, 0, sizeof(charset));
-	const gint charset_len = _countof(charset);
+	const gint charset_len = sizeof(charset) / sizeof(charset[0]);
 
     begin = strstr(buffer, "charset=");
     if (begin) {
@@ -454,9 +459,8 @@ write_content (GMimePart *part, GMimeFormatOptions *options, GMimeStream *stream
         header->name: Content-Type
         header->value: text/html; charset=gb2312
         */
-        gboolean isText = FALSE;
+        gboolean is_text_content = FALSE;
         gchar *attach_filename_utf8 = NULL;
-        wchar_t *attach_filename_utf16 = NULL;
 
         gchar content_type[256];
         memset(content_type, 0, sizeof(content_type));
@@ -471,20 +475,20 @@ write_content (GMimePart *part, GMimeFormatOptions *options, GMimeStream *stream
                 if (_stricmp(header->name, "Content-Type") == 0) {
 					const gchar* header_value = g_mime_header_get_value(header);
 					if (header_value) {
-						g_strlcpy(content_type, header->value, _countof(content_type));
+						g_strlcpy(content_type, header->value, sizeof(content_type) / sizeof(content_type[0]));
 
-						isText = strstr(header_value, "text/") && !strstr(header_value, "name=");
+						is_text_content = strstr(header_value, "text/") && !strstr(header_value, "name=");
 
 						const char* begin = strstr(header_value, "charset=");
 						if (begin) {
-							char* p = FindCharset(header_value);
+							char* p = find_charset(header_value);
 							if (p) {
-                                g_strlcpy(charset, p, _countof(charset));
+                                g_strlcpy(charset, p, sizeof(charset) / sizeof(charset[0]));
 								g_free(p);
 							}
 						}
 
-						if (isText) {
+						if (is_text_content) {
 							break;
 						}
 					}
@@ -522,7 +526,7 @@ write_content (GMimePart *part, GMimeFormatOptions *options, GMimeStream *stream
 		}
 
 		if (!charset[0]) {
-            g_strlcpy(charset, "UTF-8", _countof(charset));
+            g_strlcpy(charset, "UTF-8", sizeof(charset) / sizeof(charset[0]));
 		}
         
         nwritten = g_mime_stream_write_to_stream(content, filtered_string_stream);
@@ -532,8 +536,8 @@ write_content (GMimePart *part, GMimeFormatOptions *options, GMimeStream *stream
         g_byte_array_append(string_array, (unsigned char *) "", 1);
         
         /* check is text content */
-        if (isText) {
-            int is_wrote_stream = 0;
+        if (is_text_content) {
+            int written_to_stream = 0;
             char *str = (char *)string_array->data;
             if (str && charset[0]) {
                 const char *locale = g_mime_charset_iconv_name(charset);
@@ -553,7 +557,7 @@ write_content (GMimePart *part, GMimeFormatOptions *options, GMimeStream *stream
                     }
 
                     if (dst_buf) {
-                        is_wrote_stream = 1;
+                        written_to_stream = 1;
                         nwritten = 0;
                         ssize_t nread = strlen(dst_buf);
                         while (nwritten < nread) {
@@ -573,8 +577,8 @@ write_content (GMimePart *part, GMimeFormatOptions *options, GMimeStream *stream
                 }
             }
 
-            if (!is_wrote_stream) {
-                is_wrote_stream = 1;
+            if (!written_to_stream) {
+                written_to_stream = 1;
                 nwritten = 0;
                 ssize_t nread = strlen(str);
                 while (nwritten < nread) {
@@ -589,56 +593,87 @@ write_content (GMimePart *part, GMimeFormatOptions *options, GMimeStream *stream
             }
 		} else {
 			/* extract attach file */
-			if (stream->attach_dirpath_utf16) {
+			if (stream->attach_dirpath_utf8 || stream->attach_dirpath_utf16) {
 				if (!attach_filename_utf8) {
 					gchar tmp_filename[16] = { 0 };
 					gint64 cur_time = time(NULL);
-					sprintf_s(tmp_filename, _countof(tmp_filename), "%lld", cur_time);
+					sprintf(tmp_filename, "%lld", cur_time);
 
 					if (_stricmp(content_type, "message/rfc822") == 0) {
-						strcat_s(tmp_filename, _countof(tmp_filename), ".eml");
+						strcat(tmp_filename, ".eml");
 					}
 
 					attach_filename_utf8 = g_strdup(tmp_filename);
 				}
 
 				if (attach_filename_utf8) {
-					_wmkdir(stream->attach_dirpath_utf16);
+#if defined(_MSC_VER)
+					if (stream->attach_dirpath_utf16) {
+						_wmkdir(stream->attach_dirpath_utf16);
 
-					iconv_t cd = (iconv_t)-1;
-					cd = iconv_open("UTF-16LE", "UTF-8");
-					if (cd != (iconv_t)-1) {
-						attach_filename_utf16 = (wchar_t*)g_mime_iconv_strdup(cd, attach_filename_utf8);
-						iconv_close(cd);
-					}
+						wchar_t* attach_filename_utf16 = NULL;
 
-					gsize attach_filePath_len = (wcslen(stream->attach_dirpath_utf16) + wcslen(attach_filename_utf16) + 1) * sizeof(wchar_t);
-					wchar_t* attach_filePath_utf16 = g_malloc(attach_filePath_len);
-					if (attach_filePath_utf16) {
-						memset(attach_filePath_utf16, 0, attach_filePath_len);
-
-						swprintf_s(attach_filePath_utf16, attach_filePath_len / sizeof(wchar_t), L"%s%s", stream->attach_dirpath_utf16, attach_filename_utf16);
-
-						FILE* fp = NULL;
-						_wfopen_s(&fp, attach_filePath_utf16, L"wb");
-						if (fp) {
-							fwrite(string_array->data, 1, string_array->len, fp);
-							nwritten += string_array->len;
-							fclose(fp);
+						iconv_t cd = (iconv_t)-1;
+						cd = iconv_open("UTF-16LE", "UTF-8");
+						if (cd != (iconv_t)-1) {
+							attach_filename_utf16 = (wchar_t*)g_mime_iconv_strdup(cd, attach_filename_utf8);
+							iconv_close(cd);
 						}
 
-						g_free(attach_filePath_utf16);
+						gsize attach_filePath_len = (wcslen(stream->attach_dirpath_utf16) + wcslen(attach_filename_utf16) + 1) * sizeof(wchar_t);
+						wchar_t* attach_filePath_utf16 = g_malloc(attach_filePath_len);
+						if (attach_filePath_utf16) {
+							memset(attach_filePath_utf16, 0, attach_filePath_len);
+
+							swprintf_s(attach_filePath_utf16, attach_filePath_len / sizeof(wchar_t), L"%s%s", stream->attach_dirpath_utf16, attach_filename_utf16);
+
+							FILE* fp = NULL;
+							_wfopen_s(&fp, attach_filePath_utf16, L"wb");
+							if (fp) {
+								fwrite(string_array->data, 1, string_array->len, fp);
+								nwritten += string_array->len;
+								fclose(fp);
+							}
+
+							g_free(attach_filePath_utf16);
+							attach_filePath_utf16 = NULL;
+						}
 					}
+#else
+					if (stream->attach_dirpath_utf8) {
+						if (g_file_test(stream->attach_dirpath_utf8, G_FILE_TEST_EXISTS) == FALSE) {
+							mkdir(stream->attach_dirpath_utf8, 0755);
+						}
+
+						if (g_file_test(stream->attach_dirpath_utf8, G_FILE_TEST_EXISTS) == TRUE) {
+							gsize attach_filePath_len =
+								(strlen(stream->attach_dirpath_utf8) + strlen(attach_filename_utf8) + 1) *
+								sizeof(char);
+							char* attach_filePath_utf8 = g_malloc(attach_filePath_len);
+							if (attach_filePath_utf8) {
+								memset(attach_filePath_utf8, 0, attach_filePath_len);
+
+								sprintf(attach_filePath_utf8, "%s%s", stream->attach_dirpath_utf8, attach_filename_utf8);
+
+								FILE* fp = fopen(attach_filePath_utf8, "wb");
+								if (fp) {
+									fwrite(string_array->data, 1, string_array->len, fp);
+									nwritten += string_array->len;
+									fclose(fp);
+								}
+
+								g_free(attach_filePath_utf8);
+								attach_filePath_utf8 = NULL;
+							}
+						}
+					}
+#endif
 				}
 			}
 		}
 
         if (attach_filename_utf8) {
             g_free(attach_filename_utf8);
-        }
-
-        if (attach_filename_utf16) {
-            g_free(attach_filename_utf16);
         }
 
 		g_mime_stream_reset (content);
