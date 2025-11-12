@@ -201,7 +201,6 @@ multipart_write_to_stream (GMimeObject *object, GMimeFormatOptions *options, gbo
 		format = options;
 	}
 	
-    gboolean isWroteText = FALSE;
 	for (i = 0; i < multipart->children->len; i++) {
 		part = multipart->children->pdata[i];
 		
@@ -213,26 +212,6 @@ multipart_write_to_stream (GMimeObject *object, GMimeFormatOptions *options, gbo
 		}
 		
 		total += nwritten;*/
-
-        if (_stricmp(part->content_type->type, "text") == 0) {
-            if (isWroteText) {
-                continue;
-            } else {
-                if (g_mime_format_options_is_parse_richtext(options)) {
-                    if (_stricmp(part->content_type->subtype, "html") != 0) {
-                        continue;
-                    }
-
-                    isWroteText = TRUE;
-                } else {
-                    if (_stricmp(part->content_type->subtype, "plain") != 0) {
-                        continue;
-                    }
-
-                    isWroteText = TRUE;
-                }
-            }
-        }
 
 		/* write this part out */
 		if ((nwritten = g_mime_object_write_to_stream (part, format, stream)) == -1) {

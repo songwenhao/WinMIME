@@ -521,9 +521,9 @@ write_content (GMimePart *part, GMimeFormatOptions *options, GMimeStream *stream
             }
         }
 
-		if (!content_type[0]) {
+		/*if (!content_type[0]) {
 			return -1;
-		}
+		}*/
 
 		if (!charset[0]) {
             g_strlcpy(charset, "UTF-8", sizeof(charset) / sizeof(charset[0]));
