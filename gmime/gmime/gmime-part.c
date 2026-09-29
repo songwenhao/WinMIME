@@ -1,4 +1,4 @@
-﻿/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*  GMime
  *  Copyright (C) 2000-2022 Jeffrey Stedfast
  *
@@ -361,6 +361,74 @@ static char * find_charset(
     return NULL;
 }
 
+/* create each directory component of a dir path ended with a separator (custom attachfile support) */
+static void attach_create_directories_utf16 (const wchar_t *dirpath)
+{
+    if (!dirpath || !dirpath[0]) {
+        return;
+    }
+
+    size_t len = wcslen (dirpath);
+    wchar_t *path = (wchar_t *) g_malloc ((len + 1) * sizeof (wchar_t));
+    if (!path) {
+        return;
+    }
+
+    wcscpy_s (path, len + 1, dirpath);
+
+    wchar_t *start = path;
+    /* skip drive root like "x:\" */
+    if (len >= 3 && path[1] == L':' && path[2] == L'\\') {
+        start = path + 3;
+    }
+
+    for (wchar_t *p = start; *p; p++) {
+        if (*p == L'\\') {
+            *p = L'\0';
+            _wmkdir (path);
+            *p = L'\\';
+        }
+    }
+
+    g_free (path);
+}
+
+/* append "(n)" before the extension to keep same-name attachments (original EMLExtractor behavior) */
+static gchar * attach_build_sequenced_filename (const gchar *filename_utf8, int index)
+{
+    const gchar *slash = NULL;
+    for (const gchar *p = filename_utf8; *p; p++) {
+        if (*p == '/' || *p == '\\') {
+            slash = p;
+        }
+    }
+
+    const gchar *base_end = slash ? slash + 1 : filename_utf8;
+    const gchar *dot = NULL;
+    for (const gchar *p = base_end; *p; p++) {
+        if (*p == '.') {
+            dot = p;
+        }
+    }
+
+    gchar seq[16];
+    sprintf (seq, "(%d)", index);
+
+    size_t base_len = dot ? (size_t)(dot - filename_utf8) : strlen (filename_utf8);
+    size_t ext_len = dot ? strlen (dot) : 0;
+
+    gchar *result = (gchar *) g_malloc (base_len + strlen (seq) + ext_len + 1);
+    if (result) {
+        memcpy (result, filename_utf8, base_len);
+        strcpy (result + base_len, seq);
+        if (dot) {
+            strcpy (result + base_len + strlen (seq), dot);
+        }
+    }
+
+    return result;
+}
+
 static ssize_t
 write_content (GMimePart *part, GMimeFormatOptions *options, GMimeStream *stream)
 {
@@ -609,34 +677,61 @@ write_content (GMimePart *part, GMimeFormatOptions *options, GMimeStream *stream
 				if (attach_filename_utf8) {
 #if defined(_MSC_VER)
 					if (stream->attach_dirpath_utf16) {
-						_wmkdir(stream->attach_dirpath_utf16);
+						attach_create_directories_utf16 (stream->attach_dirpath_utf16);
 
 						wchar_t* attach_filename_utf16 = NULL;
+						gchar* attach_savedname_utf8 = NULL;
 
-						iconv_t cd = (iconv_t)-1;
-						cd = iconv_open("UTF-16LE", "UTF-8");
-						if (cd != (iconv_t)-1) {
-							attach_filename_utf16 = (wchar_t*)g_mime_iconv_strdup(cd, attach_filename_utf8);
-							iconv_close(cd);
+						/* append "(n)" sequence so same-name attachments are all kept */
+						int attach_index = stream->attach_infos ? stream->attach_infos->len + 1 : 1;
+						attach_savedname_utf8 = attach_build_sequenced_filename (attach_filename_utf8, attach_index);
+
+						if (attach_savedname_utf8) {
+							iconv_t cd = (iconv_t)-1;
+							cd = iconv_open("UTF-16LE", "UTF-8");
+							if (cd != (iconv_t)-1) {
+								attach_filename_utf16 = (wchar_t*)g_mime_iconv_strdup(cd, attach_savedname_utf8);
+								iconv_close(cd);
+							}
 						}
 
-						gsize attach_filePath_len = (wcslen(stream->attach_dirpath_utf16) + wcslen(attach_filename_utf16) + 1) * sizeof(wchar_t);
-						wchar_t* attach_filePath_utf16 = g_malloc(attach_filePath_len);
-						if (attach_filePath_utf16) {
-							memset(attach_filePath_utf16, 0, attach_filePath_len);
+						if (attach_filename_utf16) {
+							gsize attach_filePath_len = (wcslen(stream->attach_dirpath_utf16) + wcslen(attach_filename_utf16) + 1) * sizeof(wchar_t);
+							wchar_t* attach_filePath_utf16 = g_malloc(attach_filePath_len);
+							if (attach_filePath_utf16) {
+								memset(attach_filePath_utf16, 0, attach_filePath_len);
 
-							swprintf_s(attach_filePath_utf16, attach_filePath_len / sizeof(wchar_t), L"%s%s", stream->attach_dirpath_utf16, attach_filename_utf16);
+								swprintf_s(attach_filePath_utf16, attach_filePath_len / sizeof(wchar_t), L"%s%s", stream->attach_dirpath_utf16, attach_filename_utf16);
 
-							FILE* fp = NULL;
-							_wfopen_s(&fp, attach_filePath_utf16, L"wb");
-							if (fp) {
-								fwrite(string_array->data, 1, string_array->len, fp);
-								nwritten += string_array->len;
-								fclose(fp);
+								FILE* fp = NULL;
+								_wfopen_s(&fp, attach_filePath_utf16, L"wb");
+								if (fp) {
+									fwrite(string_array->data, 1, string_array->len, fp);
+									nwritten += string_array->len;
+									fclose(fp);
+
+									/* record saved attachment info */
+									if (stream->attach_infos) {
+										GMimeAttachFileInfo* info = (GMimeAttachFileInfo*)g_malloc(sizeof(GMimeAttachFileInfo));
+										if (info) {
+											info->filename_utf8 = g_strdup(attach_savedname_utf8);
+											info->size = (goffset)string_array->len;
+											g_ptr_array_add(stream->attach_infos, info);
+										}
+									}
+								}
+
+								g_free(attach_filePath_utf16);
+								attach_filePath_utf16 = NULL;
 							}
 
-							g_free(attach_filePath_utf16);
-							attach_filePath_utf16 = NULL;
+							g_free(attach_filename_utf16);
+							attach_filename_utf16 = NULL;
+						}
+
+						if (attach_savedname_utf8) {
+							g_free(attach_savedname_utf8);
+							attach_savedname_utf8 = NULL;
 						}
 					}
 #else

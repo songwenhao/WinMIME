@@ -139,9 +139,14 @@ char *g_mime_object_to_string(GMimeObject *object, GMimeFormatOptions *options);
 
 #if defined(_MSC_VER)
 char* g_mime_object_to_string_with_attachfile(const wchar_t* attach_dirpath_utf16, GMimeObject* object, GMimeFormatOptions* options);
+char* g_mime_object_to_string_with_attachfile_ex(const wchar_t* attach_dirpath_utf16, GMimeObject* object, GMimeFormatOptions* options, GPtrArray** attach_infos);
 #else
 char* g_mime_object_to_string_with_attachfile(const char* attach_dirpath_utf8, GMimeObject* object, GMimeFormatOptions* options);
+char* g_mime_object_to_string_with_attachfile_ex(const char* attach_dirpath_utf8, GMimeObject* object, GMimeFormatOptions* options, GPtrArray** attach_infos);
 #endif
+
+/* free a GPtrArray of GMimeAttachFileInfo* returned by g_mime_object_to_string_with_attachfile_ex */
+void g_mime_attach_file_info_array_free(GPtrArray* attach_infos);
 
 void g_mime_object_encode (GMimeObject *object, GMimeEncodingConstraint constraint);
 

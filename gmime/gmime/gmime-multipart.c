@@ -160,7 +160,7 @@ multipart_write_to_stream (GMimeObject *object, GMimeFormatOptions *options, gbo
 	ssize_t nwritten, total = 0;
 	GMimeFormatOptions *format;
 	gboolean is_signed;
-	GMimeObject *part;
+	GMimeObject *part, *selected;
 	guint i;
 	
 	boundary = g_mime_object_get_content_type_parameter (object, "boundary");
@@ -201,8 +201,32 @@ multipart_write_to_stream (GMimeObject *object, GMimeFormatOptions *options, gbo
 		format = options;
 	}
 	
+	/* multipart/alternative: output a single child part selected by parse_richtext.
+	 * parse_richtext FALSE: the first text/plain child (plain text body).
+	 * parse_richtext TRUE: the last child (children are ordered least to most rich).
+	 * Fall back to writing all children when no text/plain child is selected. */
+	selected = NULL;
+	if (g_mime_content_type_is_type (object->content_type, "multipart", "alternative")) {
+		if (g_mime_format_options_is_parse_richtext (options)) {
+			if (multipart->children->len > 0)
+				selected = multipart->children->pdata[multipart->children->len - 1];
+		} else {
+			for (i = 0; i < multipart->children->len; i++) {
+				part = multipart->children->pdata[i];
+				if (part->content_type && g_mime_content_type_is_type (part->content_type, "text", "plain")) {
+					selected = part;
+					break;
+				}
+			}
+		}
+	}
+	
 	for (i = 0; i < multipart->children->len; i++) {
 		part = multipart->children->pdata[i];
+		
+		/* skip the children not selected for output */
+		if (selected != NULL && part != selected)
+			continue;
 		
 		/* write the boundary */
 		/*if ((nwritten = g_mime_stream_printf (stream, "--%s%s", boundary, newline)) == -1) {

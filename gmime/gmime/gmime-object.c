@@ -1090,6 +1090,32 @@ char *g_mime_object_to_string_with_attachfile(const wchar_t *attach_dirpath_utf1
 
     return str;
 }
+
+char *g_mime_object_to_string_with_attachfile_ex(const wchar_t *attach_dirpath_utf16, GMimeObject *object, GMimeFormatOptions *options, GPtrArray **attach_infos) {
+    GMimeStream *stream;
+    GByteArray *array;
+    char *str;
+
+    g_return_val_if_fail(GMIME_IS_OBJECT(object), NULL);
+    g_return_val_if_fail(attach_infos != NULL, NULL);
+
+    *attach_infos = g_ptr_array_new();
+
+    array = g_byte_array_new();
+    stream = g_mime_stream_mem_new();
+    stream->attach_dirpath_utf16 = attach_dirpath_utf16;
+    stream->attach_infos = *attach_infos;
+    g_mime_stream_mem_set_byte_array(GMIME_STREAM_MEM(stream), array);
+
+    g_mime_object_write_to_stream(object, options, stream);
+
+    g_object_unref(stream);
+    g_byte_array_append(array, (unsigned char *) "", 1);
+    str = (char *)array->data;
+    g_byte_array_free(array, FALSE);
+
+    return str;
+}
 #else
 char* g_mime_object_to_string_with_attachfile(const char* attach_dirpath_utf8, GMimeObject* object, GMimeFormatOptions* options) {
     GMimeStream* stream;
@@ -1112,7 +1138,51 @@ char* g_mime_object_to_string_with_attachfile(const char* attach_dirpath_utf8, G
 
     return str;
 }
+
+char* g_mime_object_to_string_with_attachfile_ex(const char* attach_dirpath_utf8, GMimeObject* object, GMimeFormatOptions* options, GPtrArray** attach_infos) {
+    GMimeStream* stream;
+    GByteArray* array;
+    char* str;
+
+    g_return_val_if_fail(GMIME_IS_OBJECT(object), NULL);
+    g_return_val_if_fail(attach_infos != NULL, NULL);
+
+    *attach_infos = g_ptr_array_new();
+
+    array = g_byte_array_new();
+    stream = g_mime_stream_mem_new();
+    stream->attach_dirpath_utf8 = attach_dirpath_utf8;
+    stream->attach_infos = *attach_infos;
+    g_mime_stream_mem_set_byte_array(GMIME_STREAM_MEM(stream), array);
+
+    g_mime_object_write_to_stream(object, options, stream);
+
+    g_object_unref(stream);
+    g_byte_array_append(array, (unsigned char*)"", 1);
+    str = (char*)array->data;
+    g_byte_array_free(array, FALSE);
+
+    return str;
+}
 #endif
+
+void g_mime_attach_file_info_array_free(GPtrArray* attach_infos) {
+    if (!attach_infos) {
+        return;
+    }
+
+    for (guint i = 0; i < attach_infos->len; i++) {
+        GMimeAttachFileInfo* info = (GMimeAttachFileInfo*)attach_infos->pdata[i];
+        if (info) {
+            if (info->filename_utf8) {
+                g_free(info->filename_utf8);
+            }
+            g_free(info);
+        }
+    }
+
+    g_ptr_array_unref(attach_infos);
+}
 
 /**
  * g_mime_object_get_header_list:

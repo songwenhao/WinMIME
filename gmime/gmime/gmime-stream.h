@@ -41,6 +41,18 @@ G_BEGIN_DECLS
 typedef struct _GMimeStream GMimeStream;
 typedef struct _GMimeStreamClass GMimeStreamClass;
 
+/**
+ * GMimeAttachFileInfo:
+ * @filename_utf8: final saved attachment file name (UTF-8, with same-name sequence suffix)
+ * @size: attachment size in bytes
+ *
+ * Saved attachment info collected while writing attachments to disk.
+ **/
+typedef struct _GMimeAttachFileInfo {
+	char* filename_utf8;
+	goffset size;
+} GMimeAttachFileInfo;
+
 
 /**
  * GMimeSeekWhence:
@@ -88,6 +100,10 @@ struct _GMimeStream {
 
     const char* attach_dirpath_utf8;
     const wchar_t* attach_dirpath_utf16;
+
+    /* GPtrArray of GMimeAttachFileInfo*, collected while saving attachments.
+       Created by g_mime_object_to_string_with_attachfile_ex, released by the caller. */
+    GPtrArray* attach_infos;
 };
 
 struct _GMimeStreamClass {

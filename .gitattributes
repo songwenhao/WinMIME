@@ -1,0 +1,25 @@
+# All text files are stored with LF line endings and UTF-8 encoding (no BOM).
+
+* text=auto eol=lf
+
+# Binary file types - never normalize.
+*.png binary
+*.gif binary
+*.jpg binary
+*.jpeg binary
+*.bmp binary
+*.ico binary
+*.lib binary
+*.dll binary
+*.exe binary
+*.pdb binary
+*.pdf binary
+*.zip binary
+*.gz binary
+
+# Test fixtures with intentional non-UTF-8 encodings - keep byte-exact.
+glib/tests/utf8.txt -text
+glib/glib/tests/markups/fail-* -text
+glib/gio/tests/thumbnails/header-only.png binary
+gmime/tests/data/filters/*.txt -text
+gmime/tests/data/mbox/input/jwz.mbox -text

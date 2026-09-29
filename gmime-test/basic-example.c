@@ -1,4 +1,4 @@
-﻿/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*  GMime
  *  Copyright (C) 2000-2020 Jeffrey Stedfast
  *

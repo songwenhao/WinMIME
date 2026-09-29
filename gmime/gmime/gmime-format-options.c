@@ -112,6 +112,7 @@ g_mime_format_options_new (void)
 	options->mixed_charsets = TRUE;
 	options->international = FALSE;
 	options->maxline = 78;
+	options->parse_richtext = FALSE;
 	
 	return options;
 }
@@ -140,7 +141,8 @@ _g_mime_format_options_clone (GMimeFormatOptions *options, gboolean hidden)
 	clone->newline = options->newline;
 	clone->mixed_charsets = options->mixed_charsets;
 	clone->international = options->international;
-	clone->maxline = options->newline;
+	clone->maxline = options->maxline;
+	clone->parse_richtext = options->parse_richtext;
 	
 	clone->hidden = g_ptr_array_new ();
 	
